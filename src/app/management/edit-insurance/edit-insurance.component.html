@@ -1,4 +1,3 @@
-<!-- src/app/management/edit-insurance/edit-insurance.component.html -->
 <div class="row justify-content-center">
   <div class="col-12 col-md-6">
     <h3 class="text-center my-3">Editar Asegurado</h3>
@@ -29,6 +28,15 @@
                   class="form-control"
                   type="text"
                 />
+                <div
+                  *ngIf="
+                    editForm.get('primerNombre')?.invalid &&
+                    editForm.get('primerNombre')?.touched
+                  "
+                  class="text-danger"
+                >
+                  El primer nombre es obligatorio.
+                </div>
               </div>
             </div>
             <div class="col-6">
@@ -58,6 +66,15 @@
                   class="form-control"
                   type="text"
                 />
+                <div
+                  *ngIf="
+                    editForm.get('primerApellido')?.invalid &&
+                    editForm.get('primerApellido')?.touched
+                  "
+                  class="text-danger"
+                >
+                  El primer apellido es obligatorio.
+                </div>
               </div>
             </div>
             <div class="col-6">
@@ -71,6 +88,15 @@
                   class="form-control"
                   type="text"
                 />
+                <div
+                  *ngIf="
+                    editForm.get('segundoApellido')?.invalid &&
+                    editForm.get('segundoApellido')?.touched
+                  "
+                  class="text-danger"
+                >
+                  El segundo apellido es obligatorio.
+                </div>
               </div>
             </div>
           </div>
@@ -88,33 +114,55 @@
                   type="text"
                 />
                 <div
-  *ngIf="editForm.get('telefonoContacto')?.invalid && editForm.get('telefonoContacto')?.touched"
-  class="text-danger"
-  style="display: block;"
->
-  <div *ngIf="editForm.get('telefonoContacto')?.errors?.['required']">
-    El teléfono es obligatorio.
-  </div>
-  <div *ngIf="editForm.get('telefonoContacto')?.errors?.['pattern']">
-    El teléfono debe tener exactamente 10 dígitos.
-  </div>
-</div>
-
+                  *ngIf="
+                    editForm.get('telefonoContacto')?.invalid &&
+                    editForm.get('telefonoContacto')?.touched
+                  "
+                  class="text-danger"
+                >
+                  <div
+                    *ngIf="editForm.get('telefonoContacto')?.errors?.['required']"
+                  >
+                    El teléfono es obligatorio.
+                  </div>
+                  <div
+                    *ngIf="editForm.get('telefonoContacto')?.errors?.['pattern']"
+                  >
+                    El teléfono debe tener exactamente 10 dígitos.
+                  </div>
+                </div>
               </div>
             </div>
+
             <div class="col-6">
               <div class="mb-3">
-                <label for="correoElectronico" class="form-label"
-                  >Correo Electrónico</label
-                >
+                <label for="correoElectronico" class="form-label">Correo Electrónico</label>
                 <input
                   id="correoElectronico"
                   formControlName="correoElectronico"
                   class="form-control"
                   type="email"
                 />
+                <div
+                  *ngIf="
+                    editForm.get('correoElectronico')?.invalid &&
+                    editForm.get('correoElectronico')?.touched
+                  "
+                  class="text-danger"
+                >
+                  <div *ngIf="editForm.get('correoElectronico')?.errors?.['required']">
+                    El correo electrónico es obligatorio.
+                  </div>
+                  <div *ngIf="editForm.get('correoElectronico')?.errors?.['email']">
+                    Debe ingresar un correo electrónico válido.
+                  </div>
+                  <div *ngIf="editForm.get('correoElectronico')?.errors?.['pattern']">
+                    El correo electrónico debe ser de los dominios permitidos: gmail.com, hotmail.com, yahoo.com, outlook.com.
+                  </div>
+                </div>
               </div>
             </div>
+            
           </div>
 
           <div class="mb-3">
@@ -127,6 +175,15 @@
               class="form-control"
               type="date"
             />
+            <div
+              *ngIf="
+                editForm.get('fechaNacimiento')?.invalid &&
+                editForm.get('fechaNacimiento')?.touched
+              "
+              class="text-danger"
+            >
+              La fecha de nacimiento es obligatoria.
+            </div>
           </div>
 
           <div class="mb-3">
@@ -139,6 +196,22 @@
               class="form-control"
               type="number"
             />
+            <div
+              *ngIf="
+                editForm.get('valorEstimadoSeguro')?.invalid &&
+                editForm.get('valorEstimadoSeguro')?.touched
+              "
+              class="text-danger"
+            >
+              <div
+                *ngIf="editForm.get('valorEstimadoSeguro')?.errors?.['required']"
+              >
+                El valor estimado es obligatorio.
+              </div>
+              <div *ngIf="editForm.get('valorEstimadoSeguro')?.errors?.['min']">
+                El valor estimado debe ser un número positivo.
+              </div>
+            </div>
           </div>
 
           <div class="mb-3">

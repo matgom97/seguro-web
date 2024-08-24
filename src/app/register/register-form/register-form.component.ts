@@ -24,7 +24,14 @@ export class RegisterFormComponent {
       primerApellido: ['', Validators.required],
       segundoApellido: ['', Validators.required],
       telefonoContacto: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-      correoElectronico: ['', [Validators.required, Validators.email]],
+      correoElectronico: [
+        '', 
+        [
+          Validators.required, 
+          Validators.email,
+          Validators.pattern(/^[a-zA-Z0-9._%+-]+@(gmail\.com|hotmail\.com|yahoo\.com|outlook\.com)$/)
+        ]
+      ],
       fechaNacimiento: ['', Validators.required],
       valorEstimadoSeguro: ['', [Validators.required, Validators.min(0)]],
       observaciones: ['']

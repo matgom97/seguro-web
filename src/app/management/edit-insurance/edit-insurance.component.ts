@@ -4,11 +4,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SeguroService } from '../../service/seguro.service';
 import { ReactiveFormsModule } from '@angular/forms'; // Asegúrate de que esto esté importado
+import { CommonModule } from '@angular/common'; // Importar CommonModule
+
 
 @Component({
   selector: 'app-edit-insurance',
   standalone: true,
-  imports: [ReactiveFormsModule], 
+  imports: [ReactiveFormsModule,CommonModule], 
   templateUrl: './edit-insurance.component.html',
   styleUrls: ['./edit-insurance.component.css']
 })
