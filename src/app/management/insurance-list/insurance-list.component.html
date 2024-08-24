@@ -1,0 +1,74 @@
+<div class="row justify-content-center">
+  <div class="col-10">
+    <div class="d-flex justify-content-between align-items-center">
+      <h3 class="text-center my-3">Visualización de asegurado</h3>
+      <div class="col-5">
+        <input
+          id="buscar"
+          placeholder="Buscar asegurado"
+          class="form-control"
+          [(ngModel)]="searchText"
+          (input)="filterInsurances()"
+        />
+      </div>
+    </div>
+
+    <div class="card mb-5">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Primer Nombre</th>
+                <th scope="col">Segundo Nombre</th>
+                <th scope="col">Primer Apellido</th>
+                <th scope="col">Segundo Apellido</th>
+                <th scope="col">Teléfono de Contacto</th>
+                <th scope="col">Correo Electrónico</th>
+                <th scope="col">Fecha de Nacimiento</th>
+                <th scope="col">Valor Estimado del Seguro</th>
+                <th scope="col">Observaciones</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let seguro of filteredInsurances">
+                <td>{{ seguro.numeroIdentificacion }}</td>
+                <td>{{ seguro.primerNombre }}</td>
+                <td>{{ seguro.segundoNombre }}</td>
+                <td>{{ seguro.primerApellido }}</td>
+                <td>{{ seguro.segundoApellido }}</td>
+                <td>{{ seguro.telefonoContacto }}</td>
+                <td>{{ seguro.correoElectronico }}</td>
+                <td>{{ seguro.fechaNacimiento | date }}</td>
+                <td>{{ seguro.valorEstimadoSeguro | currency }}</td>
+                <td>{{ seguro.observaciones }}</td>
+                <td>
+                  <div class="row">
+                    <button
+                    (click)="deleteInsurance(seguro.numeroIdentificacion)"
+                    class="btn btn-danger"
+                  >
+                    Eliminar
+                  </button>
+                  <button
+                    [routerLink]="[
+                      '/edit-insurance',
+                      seguro.numeroIdentificacion
+                    ]"
+                    class="btn btn-primary"
+                  >
+                    Editar
+                  </button>
+                  </div>
+                  
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

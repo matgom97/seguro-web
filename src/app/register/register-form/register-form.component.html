@@ -1,0 +1,220 @@
+<!-- src/app/register/register-form/register-form.component.html -->
+<div class="row justify-content-center">
+  <div class="col-12 col-md-6">
+    <h3 class="text-center my-3">Creación de asegurado</h3>
+    <div class="card mb-5">
+      <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="numeroIdentificacion" class="form-label"
+              >Número de Identificación</label
+            >
+            <input
+              id="numeroIdentificacion"
+              formControlName="numeroIdentificacion"
+              type="number"
+              class="form-control"
+            />
+            <div
+              *ngIf="
+                registerForm.get('numeroIdentificacion')?.invalid &&
+                registerForm.get('numeroIdentificacion')?.touched
+              "
+              class="valid-feedback"
+            >
+              El número de identificación es obligatorio.
+            </div>
+          </div>
+          <!-- Nombres -->
+          <div class="row">
+            <div class="col-6">
+              <div class="mb-3">
+                <label for="primerNombre" class="form-label"
+                  >Primer Nombre</label
+                >
+                <input
+                  id="primerNombre"
+                  formControlName="primerNombre"
+                  class="form-control"
+                />
+                <div
+                  *ngIf="
+                    registerForm.get('primerNombre')?.invalid &&
+                    registerForm.get('primerNombre')?.touched
+                  "
+                >
+                  Primer nombre es obligatorio.
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="mb-3">
+                <label for="segundoNombre" class="form-label"
+                  >Segundo Nombre</label
+                >
+                <input
+                  id="segundoNombre"
+                  formControlName="segundoNombre"
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Apellidos -->
+          <div class="row">
+            <div class="col-6">
+              <div class="mb-3">
+                <label for="primerApellido" class="form-label"
+                  >Primer Apellido</label
+                >
+                <input
+                  id="primerApellido"
+                  formControlName="primerApellido"
+                  class="form-control"
+                />
+                <div
+                  *ngIf="
+                    registerForm.get('primerApellido')?.invalid &&
+                    registerForm.get('primerApellido')?.touched
+                  "
+                  class="valid-feedback"
+                >
+                  Primer apellido es obligatorio.
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="mb-3">
+                <label for="segundoApellido" class="form-label"
+                  >Segundo Apellido</label
+                >
+                <input
+                  id="segundoApellido"
+                  formControlName="segundoApellido"
+                  class="form-control"
+                />
+                <div
+                  *ngIf="
+                    registerForm.get('segundoApellido')?.invalid &&
+                    registerForm.get('segundoApellido')?.touched
+                  "
+                  class="valid-feedback"
+                >
+                  Segundo apellido es obligatorio.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Información de contacto -->
+          <div class="row">
+            <div class="col-6">
+              <div class="mb-3">
+                <label for="telefonoContacto" class="form-label"
+                  >Teléfono de Contacto</label
+                >
+                <input
+                  id="telefonoContacto"
+                  formControlName="telefonoContacto"
+                  class="form-control"
+                />
+                <div
+                  *ngIf="
+                    registerForm.get('telefonoContacto')?.invalid &&
+                    registerForm.get('telefonoContacto')?.touched
+                  "
+                  class="valid-feedback"
+                >
+                  El teléfono de contacto es obligatorio y debe ser un número
+                  válido de 10 dígitos.
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="mb-3">
+                <label for="correoElectronico" class="form-label"
+                  >Correo Electrónico</label
+                >
+                <input
+                  id="correoElectronico"
+                  formControlName="correoElectronico"
+                  class="form-control"
+                />
+                <div
+                  *ngIf="
+                    registerForm.get('correoElectronico')?.invalid &&
+                    registerForm.get('correoElectronico')?.touched
+                  "
+                  class="valid-feedback"
+                >
+                  El correo electrónico es obligatorio y debe ser válido.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="fechaNacimiento" class="form-label"
+              >Fecha de Nacimiento</label
+            >
+            <input
+              id="fechaNacimiento"
+              formControlName="fechaNacimiento"
+              type="date"
+              class="form-control"
+            />
+            <div
+              *ngIf="
+                registerForm.get('fechaNacimiento')?.invalid &&
+                registerForm.get('fechaNacimiento')?.touched
+              "
+              class="valid-feedback"
+            >
+              La fecha de nacimiento es obligatoria.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="valorEstimadoSeguro" class="form-label"
+              >Valor Estimado Seguro</label
+            >
+            <input
+              id="valorEstimadoSeguro"
+              formControlName="valorEstimadoSeguro"
+              type="number"
+              class="form-control"
+            />
+            <div
+              *ngIf="
+                registerForm.get('valorEstimadoSeguro')?.invalid &&
+                registerForm.get('valorEstimadoSeguro')?.touched
+              "
+              class="valid-feedback"
+            >
+              El valor estimado es obligatorio y debe ser un número positivo.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="observaciones" class="form-label">Observaciones</label>
+            <textarea
+              id="observaciones"
+              formControlName="observaciones"
+              class="form-control"
+            ></textarea>
+          </div>
+          <p>Formulario válido: {{ registerForm.valid }}</p>
+
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="registerForm.invalid"
+          >
+            Registrar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

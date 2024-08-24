@@ -1,0 +1,164 @@
+<!-- src/app/management/edit-insurance/edit-insurance.component.html -->
+<div class="row justify-content-center">
+  <div class="col-12 col-md-6">
+    <h3 class="text-center my-3">Editar Asegurado</h3>
+    <div class="card mb-5">
+      <div class="card-body">
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="numeroIdentificacion" class="form-label"
+              >Número de Identificación</label
+            >
+            <input
+              id="numeroIdentificacion"
+              formControlName="numeroIdentificacion"
+              class="form-control"
+              type="text"
+            />
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <div class="mb-3">
+                <label for="primerNombre" class="form-label"
+                  >Primer Nombre</label
+                >
+                <input
+                  id="primerNombre"
+                  formControlName="primerNombre"
+                  class="form-control"
+                  type="text"
+                />
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="mb-3">
+                <label for="segundoNombre" class="form-label"
+                  >Segundo Nombre</label
+                >
+                <input
+                  id="segundoNombre"
+                  formControlName="segundoNombre"
+                  class="form-control"
+                  type="text"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <div class="mb-3">
+                <label for="primerApellido" class="form-label"
+                  >Primer Apellido</label
+                >
+                <input
+                  id="primerApellido"
+                  formControlName="primerApellido"
+                  class="form-control"
+                  type="text"
+                />
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="mb-3">
+                <label for="segundoApellido" class="form-label"
+                  >Segundo Apellido</label
+                >
+                <input
+                  id="segundoApellido"
+                  formControlName="segundoApellido"
+                  class="form-control"
+                  type="text"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <div class="mb-3">
+                <label for="telefonoContacto" class="form-label"
+                  >Teléfono de Contacto</label
+                >
+                <input
+                  id="telefonoContacto"
+                  formControlName="telefonoContacto"
+                  class="form-control"
+                  type="text"
+                />
+                <div
+  *ngIf="editForm.get('telefonoContacto')?.invalid && editForm.get('telefonoContacto')?.touched"
+  class="text-danger"
+  style="display: block;"
+>
+  <div *ngIf="editForm.get('telefonoContacto')?.errors?.['required']">
+    El teléfono es obligatorio.
+  </div>
+  <div *ngIf="editForm.get('telefonoContacto')?.errors?.['pattern']">
+    El teléfono debe tener exactamente 10 dígitos.
+  </div>
+</div>
+
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="mb-3">
+                <label for="correoElectronico" class="form-label"
+                  >Correo Electrónico</label
+                >
+                <input
+                  id="correoElectronico"
+                  formControlName="correoElectronico"
+                  class="form-control"
+                  type="email"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="fechaNacimiento" class="form-label"
+              >Fecha de Nacimiento</label
+            >
+            <input
+              id="fechaNacimiento"
+              formControlName="fechaNacimiento"
+              class="form-control"
+              type="date"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="valorEstimadoSeguro" class="form-label"
+              >Valor Estimado del Seguro</label
+            >
+            <input
+              id="valorEstimadoSeguro"
+              formControlName="valorEstimadoSeguro"
+              class="form-control"
+              type="number"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="observaciones" class="form-label">Observaciones</label>
+            <textarea
+              id="observaciones"
+              formControlName="observaciones"
+              class="form-control"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="editForm.invalid"
+          >
+            Actualizar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
